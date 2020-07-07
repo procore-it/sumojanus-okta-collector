@@ -18,7 +18,8 @@ SUMO_OKTA_URL=${SUMO_OKTA_URL:=$4}
 SUMO_ENABLE_SNI=${SUMO_ENABLE_SNI:=false}
 SUMO_RECEIVER_URL=${SUMO_RECEIVER_URL:=https://collectors.sumologic.com}
 # Handle case for an empty string
-SUMO_COLLECTOR_NAME=${SUMO_COLLECTOR_NAME_PREFIX='collector_container-'}${SUMO_COLLECTOR_NAME:=$(cat /etc/hostname)}
+#SUMO_COLLECTOR_NAME=${SUMO_COLLECTOR_NAME_PREFIX='collector_container-'}${SUMO_COLLECTOR_NAME:=$(cat /etc/hostname)}
+SUMO_COLLECTOR_NAME=${SUMO_COLLECTOR_NAME:=$(cat /etc/hostname)}
 SUMO_SOURCES_JSON=${SUMO_SOURCES_JSON:=/etc/sumo-sources.json}
 SUMO_SYNC_SOURCES=${SUMO_SYNC_SOURCES:=false}
 SUMO_COLLECTOR_EPHEMERAL=${SUMO_COLLECTOR_EPHEMERAL:=true}

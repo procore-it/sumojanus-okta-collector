@@ -15,13 +15,16 @@ RUN apt-get update --quiet && \
  apt-get clean --quiet && \
  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV SUMO_COLLECTOR_NAME sumojanus-okta-collector
 ENV SUMO_CLOBBER true
 ENV SUMO_ENABLE_SNI true
+
+ENV SUMO_COLLECTOR_NAME sumojanus-okta-collector-dev
+ENV SUMO_SOURCE_CATEGORY dev/okta
 
 COPY run.sh /run.sh
 COPY sumojanus-okta /sumojanus-okta
 ADD sumo-sources.json /etc/sumo-sources.json
+ADD sumo-sources.json.tmpl /etc/sumo-sources.json.tmpl
 
 EXPOSE 80
 
