@@ -15,6 +15,7 @@ SUMO_ACCESS_ID=${SUMO_ACCESS_ID:=$1}
 SUMO_ACCESS_KEY=${SUMO_ACCESS_KEY:=$2}
 SUMO_OKTA_KEY=${SUMO_OKTA_KEY:=$3}
 SUMO_OKTA_URL=${SUMO_OKTA_URL:=$4}
+SUMO_ENABLE_SNI=${SUMO_ENABLE_SNI:=false}
 SUMO_RECEIVER_URL=${SUMO_RECEIVER_URL:=https://collectors.sumologic.com}
 # Handle case for an empty string
 SUMO_COLLECTOR_NAME=${SUMO_COLLECTOR_NAME_PREFIX='collector_container-'}${SUMO_COLLECTOR_NAME:=$(cat /etc/hostname)}
@@ -120,6 +121,7 @@ generate_user_properties_file() {
         ["SUMO_JAVA_MEMORY_MAX"]="wrapper.java.maxmemory"
         ["SUMO_COLLECTOR_FIELDS"]="fields"
         ["SUMO_ENABLE_SCRIPTS"]="enableScriptSource"
+        ["SUMO_ENABLE_SNI"]="wrapper.java.additional.3=-Djsse.enableSNIExtension"
     )
 
     USER_PROPERTIES=""
@@ -179,4 +181,8 @@ if [ "${SUMO_FIPS_JCE}" == "true" ]; then
 fi
 
 # Don't leave our shell hanging around
+service nginx start
+#service collector start
+#wget -O - https://collectors.us2.sumologic.com
+#tail -F /opt/SumoCollector/logs/collector.log
 exec /opt/SumoCollector/collector console
