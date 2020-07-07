@@ -23,7 +23,6 @@ ENV SUMO_SOURCE_CATEGORY dev/okta
 
 COPY run.sh /run.sh
 COPY sumojanus-okta /sumojanus-okta
-ADD sumo-sources.json /etc/sumo-sources.json
 ADD sumo-sources.json.tmpl /etc/sumo-sources.json.tmpl
 
 EXPOSE 80
