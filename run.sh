@@ -184,6 +184,5 @@ fi
 # Don't leave our shell hanging around
 service nginx start
 #service collector start
-#wget -O - https://collectors.us2.sumologic.com
 #tail -F /opt/SumoCollector/logs/collector.log
 exec /opt/SumoCollector/collector console

@@ -15,6 +15,7 @@ RUN apt-get update --quiet && \
  apt-get clean --quiet && \
  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+
 ENV SUMO_CLOBBER true
 ENV SUMO_ENABLE_SNI true
 
@@ -25,6 +26,6 @@ COPY run.sh /run.sh
 COPY sumojanus-okta /sumojanus-okta
 ADD sumo-sources.json.tmpl /etc/sumo-sources.json.tmpl
 
-EXPOSE 80
+EXPOSE 80 2222
 
 ENTRYPOINT ["/bin/bash", "/run.sh"]
