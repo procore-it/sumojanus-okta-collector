@@ -24,8 +24,7 @@ ENV SUMO_SOURCE_CATEGORY dev/okta
 
 COPY run.sh /run.sh
 COPY sumojanus-okta /sumojanus-okta
+RUN mkdir data && touch /sumojanus-okta/data/okta_checkpoint.dat
 ADD sumo-sources.json.tmpl /etc/sumo-sources.json.tmpl
-
-EXPOSE 80 2222
 
 ENTRYPOINT ["/bin/bash", "/run.sh"]
